@@ -138,7 +138,7 @@ public class PassRunner {
     // This will allow the customer to enter in the values for their relative city
     // and will use this entered and computed data for buildinng flights and boarding
     // passes.
-    public static void pickFlightPlanner(Customers customers) {
+    public static void pickFlightPlanner(Customers customers) throws IOException {
         //Display a list of users for output to the screen
         Scanner in = new Scanner(System.in);
         // Get user data

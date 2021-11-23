@@ -1,0 +1,22 @@
+-------------------Customer Information-------------------------
+First Name:      ALice
+Last Name:       Springs
+Phone:           (910)778-9011
+Email:           ultra@aol.com
+Age              33
+Gender           FEMALE
+--------------------Flight Information---------------------------
+Boarding pass Number1b51d921-d7c9-4bc5-b40d-c008d9a16fdb
+Carrier:         United
+Departure:       Raleigh
+Dept Time:       2021-12-25T06:00
+Arriving:        Boston
+Arrival Time:    2021-12-25T07:39
+------------------------------------------------------------------
+Flight hours:    1
+Flight mins:     39
+Flight charges:  379.50
+Discount:        94.88
+Taxes:           26.57
+Fees:            30.00
+Total:           341.19

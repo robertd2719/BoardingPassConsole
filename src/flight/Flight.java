@@ -185,4 +185,8 @@ public class Flight {
     public void setArrivalLocalDateTime(LocalDateTime arrivalLocalDateTime) {
         this.arrivalLocalDateTime = arrivalLocalDateTime;
     }
+
+    public String getCarrier() {
+        return carrier;
+    }
 }
