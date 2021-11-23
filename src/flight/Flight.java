@@ -23,6 +23,7 @@ public class Flight {
     LocalDateTime departureLocalDateTime;
     LocalDateTime arrivalLocalDateTime;
     String carrier;
+    // no args constructor for specialized use cases not utilized in this project
     public Flight() {
         this.deptCity = "";
         this.arrivalCity = "";
@@ -32,6 +33,8 @@ public class Flight {
         this.departureTime = departureTime;
     }
 
+    // Constructor that will take in user entered data and store/compute all necesssary fields
+    // for flight information
     public Flight(String deptCity, String arrivalCity, String month, String day, String year, String time) {
         System.out.println("New flight was created");
         this.deptCity = deptCity;
@@ -50,6 +53,7 @@ public class Flight {
         System.out.println("Carrier: "+this.carrier);
     }
 
+    // function to parse departure time and use this as the basis to compute a new date-time group
     public void computeArrivalTime(String departureTime) {
         // LocalDateTime.parse("2015-02-20T06:30:00");
         String deptHours = Character.toString(this.departureTime.charAt(0)) + this.departureTime.charAt(1);
@@ -60,6 +64,7 @@ public class Flight {
 
     }
 
+    // method uses an example .csv file to parse expected flight times
     public void computeFlightTime(String deptCity, String arrivalCity) {
         Path path = Paths.get("src/resources/distance.csv");
 
@@ -84,6 +89,7 @@ public class Flight {
         }
     }
 
+    // GETTERS AND SETTERS------------------------------------------------
     public String getDeptCity() {
         return deptCity;
     }

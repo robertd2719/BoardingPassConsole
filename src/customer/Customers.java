@@ -3,6 +3,8 @@ package customer;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+// Customers is a repository of customers with various uses inside the program
+// Effectively a wrapper for the Arraylist the heart of the class.
 public class Customers implements Serializable {
     ArrayList<Customer> customers;
     public Customers(){

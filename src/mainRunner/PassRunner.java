@@ -28,20 +28,21 @@ public class PassRunner {
             userSelectMenu();
             String selection = in.next();
             System.out.println();
+            // Allow the customer to select the mode of operation including 'quit'
             switch (selection) {
+                // Create new Customer
                 case "1":
                     Customer customer = createCustomer();
                     customers.addCustomer(customer);
                     writeCustomerFile(customers);
                     customers = readCustomerFile();
-                    System.out.println("After update: ");
-                    for (Customer item : customers.getCustomers()) {
-                        System.out.println(item);
-                    }
+                    System.out.println("New customer created and saved to file");
                     break;
+                // Create new flight-planner
                 case "2":
                     pickFlightPlanner(customers);
                     break;
+                // Exit
                 case "3":
                     System.out.println("\t\t\t\tThank you and have a nice day");
                     quit = true;
@@ -49,6 +50,7 @@ public class PassRunner {
         }
     }
 
+    // Function allows for the creation of a new customer and input of all relevant data
     public static Customer createCustomer() {
         Scanner in = new Scanner(System.in);
         System.out.println("------New Customer---");
@@ -79,12 +81,14 @@ public class PassRunner {
         return customer;
     }
 
+    //@TODO clean this output up a bit to be more human readable
     public static void listCustomers(Customers customers) {
         for (Customer customer : customers.getCustomers()) {
             System.out.println(customer);
         }
     }
 
+    // Attempt to create customers.ser file
     public static void createCustomerFile(String str) {
         Path path = Paths.get("src/resources/" + str);
         if (Files.exists(path)) {
@@ -99,6 +103,7 @@ public class PassRunner {
         }
     }
 
+    // Serialize our objects for output to file as objects for retrieval later
     public static void writeCustomerFile(Customers customers) throws IOException {
         ArrayList<Customer> outList = customers.getCustomers();
         FileOutputStream fos = new FileOutputStream("src/resources/customers.ser");
@@ -108,6 +113,7 @@ public class PassRunner {
         fos.close();
     }
 
+    // Deserialize the data from the file for usage by the program
     public static Customers readCustomerFile() throws IOException, ClassNotFoundException {
         Customers customers = new Customers();
         var fis = new FileInputStream("src/resources/customers.ser");
@@ -116,6 +122,7 @@ public class PassRunner {
         return customers;
     }
 
+    // Display menu method
     public static void userSelectMenu() {
         System.out.println("\t\t\t\tWelcome to Good Enough Airlines");
         System.out.println("\t\t\t\t-------------------------------");
@@ -127,9 +134,13 @@ public class PassRunner {
         System.out.print("\t\t\t\tPlease Choose: (1 - 3 ) : ");
     }
 
+    // This will allow the customer to enter in the values for their relative city
+    // and will use this entered and computed data for buildinng flights and boarding
+    // passes.
     public static void pickFlightPlanner(Customers customers) {
         //Display a list of users for output to the screen
         Scanner in = new Scanner(System.in);
+        // Get user data
         System.out.println("\t\t\t\t-----Flight Planner-----");
         System.out.print("\t\t\t\tDeparture City: ");
         String departureCity = in.next();
@@ -164,6 +175,9 @@ public class PassRunner {
             default :
                 time = "0600";
         }
+        // Use the data from above to creat a new flight object
+        // the flight object will compute flight times and departure and return flight
+        // times for each flight
         Flight flight = new Flight(departureCity, arrivalCity, month, day, year, time);
         System.out.println("\t\t\t\tSelect Customer:  ");
         var count = 1;
@@ -171,6 +185,8 @@ public class PassRunner {
             System.out.println(count + ". " + customer.getFirstName() + " " + customer.getLastName());
             count += 1;
         }
+        // Once the flight has been chosen, select customer from customer list
+        // to build the boarding pass file.
         String selection = in.next();
         Customer selectedCustomer = customers.getCustomers().get(Integer.parseInt(selection) - 1);
         System.out.println("You selected: " + selectedCustomer.getFirstName());

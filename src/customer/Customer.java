@@ -18,6 +18,7 @@ public class Customer implements Serializable {
         double discount = 0.0;
     }
 
+    // Create new customer object.
     public Customer(String firstName, String lastName, String age, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
