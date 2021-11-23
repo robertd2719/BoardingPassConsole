@@ -1,5 +1,6 @@
 package mainRunner;
 
+import boardingPass.BoardingPass;
 import customer.*;
 import customer.Gender;
 import flight.Flight;
@@ -190,6 +191,8 @@ public class PassRunner {
         String selection = in.next();
         Customer selectedCustomer = customers.getCustomers().get(Integer.parseInt(selection) - 1);
         System.out.println("You selected: " + selectedCustomer.getFirstName());
+        // Populate the boarding pass with information from the customer
+        BoardingPass boardingPass = new BoardingPass(selectedCustomer,flight);
     }
 
 }

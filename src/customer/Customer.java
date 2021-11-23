@@ -18,7 +18,8 @@ public class Customer implements Serializable {
         double discount = 0.0;
     }
 
-    // Create new customer object.
+    // Create new customer object. Also determines what discount a person
+    // qualifies for
     public Customer(String firstName, String lastName, String age, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,7 +34,7 @@ public class Customer implements Serializable {
             discount = 0.25;
         }
     }
-
+    // GETTERS AND SETTERS
     public String getFirstName() {
         return firstName;
     }
